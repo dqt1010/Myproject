@@ -1,0 +1,54 @@
+body {
+  background-color: black;
+  perspective: 2000px;
+  overflow: hidden;
+  color: white;
+}
+
+.Container {
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
+}
+.Container .Box {
+  content: "topper";
+  position: absolute;
+  width: 15vw;
+  height: 40vh;
+  left: 50%;
+  top: 50%;
+  margin-left: -7.5vw;
+  margin-top: -20vh;
+}
+.Container .Box:nth-child(1) {
+  transform: translate3d(17.6335575688vw, 0, 24.2705098312vw) rotateY(36deg);
+}
+.Container .Box:nth-child(2) {
+  transform: translate3d(28.5316954889vw, 0, 9.2705098312vw) rotateY(72deg);
+}
+.Container .Box:nth-child(3) {
+  transform: translate3d(28.5316954889vw, 0, -9.2705098312vw) rotateY(108deg);
+}
+.Container .Box:nth-child(4) {
+  transform: translate3d(17.6335575688vw, 0, -24.2705098312vw) rotateY(144deg);
+}
+.Container .Box:nth-child(5) {
+  transform: translate3d(0vw, 0, -30vw) rotateY(180deg);
+}
+.Container .Box:nth-child(6) {
+  transform: translate3d(-17.6335575688vw, 0, -24.2705098312vw) rotateY(216deg);
+}
+.Container .Box:nth-child(7) {
+  transform: translate3d(-28.5316954889vw, 0, -9.2705098312vw) rotateY(252deg);
+}
+.Container .Box:nth-child(8) {
+  transform: translate3d(-28.5316954889vw, 0, 9.2705098312vw) rotateY(288deg);
+}
+.Container .Box:nth-child(9) {
+  transform: translate3d(-17.6335575688vw, 0, 24.2705098312vw) rotateY(324deg);
+}
+.Container .Box:nth-child(10) {
+  transform: translate3d(0vw, 0, 30vw) rotateY(360deg);
+}
+
+/*# sourceMappingURL=Demo6.css.map */

@@ -1,0 +1,147 @@
+<html>
+  <head>
+    <title>搜索栏模板</title>
+    <style>
+          .d-flex {
+            display: flex !important;
+          }
+          .form-control {
+            display: block;
+            width: 300px;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 0.8;
+            color: #212529;
+            background-color: rgba(255, 255, 255, 0.2);
+            background-clip: padding-box;
+            border: 1px solid black;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 40px;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .form-control {
+              transition: none;
+            }
+          }
+          .form-control[type=file] {
+            overflow: hidden;
+          }
+          .form-control[type=file]:not(:disabled):not([readonly]) {
+            cursor: pointer;
+          }
+          .form-control:focus {
+            color: #212529;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+          }
+          .me-2 {
+            margin-right: 0.5rem !important;
+          }
+          .btn {
+            --bs-btn-padding-x: 0.75rem;
+            --bs-btn-padding-y: 0.325rem;
+            --bs-btn-font-family: ;
+            --bs-btn-font-size: 1rem;
+            --bs-btn-font-weight: 400;
+            --bs-btn-line-height: 1.5;
+            --bs-btn-color: #212529;
+            --bs-btn-bg: transparent;
+            --bs-btn-border-width: 1px;
+            --bs-btn-border-color: transparent;
+            --bs-btn-border-radius: 0.375rem;
+            --bs-btn-hover-border-color: transparent;
+            --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+            --bs-btn-disabled-opacity: 0.65;
+            --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
+            display: inline-block;
+            padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+            font-family: var(--bs-btn-font-family);
+            font-size: var(--bs-btn-font-size);
+            font-weight: var(--bs-btn-font-weight);
+            line-height: var(--bs-btn-line-height);
+            color: var(--bs-btn-color);
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+            border-radius: var(--bs-btn-border-radius);
+            background-color: var(--bs-btn-bg);
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .btn {
+              transition: none;
+            }
+          }
+          .btn:hover {
+            color: var(--bs-btn-hover-color);
+            background-color: var(--bs-btn-hover-bg);
+            border-color: var(--bs-btn-hover-border-color);
+          }
+          .btn-check + .btn:hover {
+            color: var(--bs-btn-color);
+            background-color: var(--bs-btn-bg);
+            border-color: var(--bs-btn-border-color);
+          }
+          .btn:focus-visible {
+            color: var(--bs-btn-hover-color);
+            background-color: var(--bs-btn-hover-bg);
+            border-color: var(--bs-btn-hover-border-color);
+            outline: 0;
+            box-shadow: var(--bs-btn-focus-box-shadow);
+          }
+          .btn-check:focus-visible + .btn {
+            border-color: var(--bs-btn-hover-border-color);
+            outline: 0;
+            box-shadow: var(--bs-btn-focus-box-shadow);
+          }
+          .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+            color: var(--bs-btn-active-color);
+            background-color: var(--bs-btn-active-bg);
+            border-color: var(--bs-btn-active-border-color);
+          }
+          .btn-check:checked + .btn:focus-visible, :not(.btn-check) + .btn:active:focus-visible, .btn:first-child:active:focus-visible, .btn.active:focus-visible, .btn.show:focus-visible {
+            box-shadow: var(--bs-btn-focus-box-shadow);
+          }
+          .btn-outline-light {
+            border-radius: 23px;
+            --bs-btn-color:black;
+            --bs-btn-border-color: black;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: black;
+            --bs-btn-hover-border-color:darkgray;
+            --bs-btn-focus-shadow-rgb: 248, 249, 250;
+            --bs-btn-active-color: #000;
+            --bs-btn-active-bg: black;
+            --bs-btn-active-border-color: black;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: darkgray;
+            --bs-btn-disabled-bg: transparent;
+            --bs-btn-disabled-border-color: black;
+            --bs-gradient: none;
+          }
+    </style>
+  </head>
+<body>
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" id="searchtext" placeholder="搜索栏" aria-label="Search">
+        <button class="btn btn-outline-light text-nowrap" type="button" onclick="searchfunc()">搜索</button>
+      </form><br>
+     <script type="text/javascript">
+        function searchfunc() {
+        	var str = document.getElementById("searchtext").value;
+        	location.href = str + ".html";
+        }
+        </script>
+</body>
+</html>

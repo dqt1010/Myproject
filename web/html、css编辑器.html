@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+<script type="text/javascript">coded()</script>
+<title>html编辑器</title>
+</head>
+
+<body>
+<p style="text-align: center;">Advanced compiler</p>
+
+<div id = 'container' style="height: 500px; width: 1000px; bgcolor : #FF7F50">
+<textarea autocomplete="off" id = "textareaCode" warp = "logical" spellcheck="false" stype="display:none;" style="height : 100%; width: 49%; background-color: #F0F8FF; float: left" onkeypress="coded()">
+<!DOCTYPE html>
+<html>
+<head> 
+</head>
+<body>
+<p> 请输入你的HTML/CSS代码 </p>
+</body>
+</html>
+</textarea>
+<div id = 'textareaCoded' style="height : 100%; width : 49%; background-color: #F0F8FF; float: right" wrap="virtual">
+<p id = 'html_code'> 请输入你的HTML/CSS代码 </p>
+</div>
+</div>
+
+<div>
+<button type = 'button' id='bt' name = 'bt' onclick="coded()">运行 </button>
+</div>
+
+<script>
+function coded(){
+var strCode = document.getElementById("textareaCode").value;
+document.getElementById("html_code").innerHTML = strCode;
+}
+</script>
+</body>
+</html>

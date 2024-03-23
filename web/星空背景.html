@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+        background-color: #07081c;
+        overflow: hidden;
+    }
+    #StarStage {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: transparent;
+        z-index: 1000;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="StarStage"></canvas>
+<script>
+(()=>{
+    var e = {
+        193: e=>{
+            e.exports = function(e, t) {
+                window[t] = e
+            }
+        }
+        ,
+        28: ()=>{
+            window.ReqFrame = window.requestAnimationFrame;
+            var e, t, o, n, i = document.getElementById("StarStage"), r = i.getContext("2d"), d = 2e3, a = "0." + Math.floor(10 * Math.random()) + 1, w = 2 * i.width, h = [];
+            function s() {
+                for (e = i.width / 2,
+                t = i.height / 2,
+                h = [],
+                n = 0; n < d; n++)
+                    o = {
+                        x: Math.random() * i.width,
+                        y: Math.random() * i.height,
+                        z: Math.random() * i.width,
+                        o: "0." + Math.floor(99 * Math.random()) + 1
+                    },
+                    h.push(o)
+            }
+            s(),
+            function u() {
+                ReqFrame(u),
+                function() {
+                    for (n = 0; n < d; n++)
+                        (o = h[n]).z--,
+                        o.z <= 0 && (o.z = i.width)
+                }(),
+                function() {
+                    var u, m, f;
+                    for (i.width == window.innerWidth && i.width == window.innerWidth || (i.width = window.innerWidth,
+                    i.height = window.innerHeight,
+                    s()),
+                    r.clearRect(0, 0, i.width, i.height),
+                    r.fillStyle = "rgba(209, 255, 255, " + a + ")",
+                    n = 0; n < d; n++)
+                        u = ((o = h[n]).x - e) * (w / o.z),
+                        u += e,
+                        m = (o.y - t) * (w / o.z),
+                        m += t,
+                        f = w / o.z * 1,
+                        r.fillRect(u, m, f, f),
+                        r.fillStyle = "rgba(209, 255, 255, " + o.o + ")"
+                }()
+            }()
+        }
+        ,
+        659: (e,t,o)=>{
+            const n = o(193);
+            var i = {
+                MouseX: 0,
+                MouseY: 0,
+                MouseDown: !1
+            };
+            window.addEventListener("mousemove", (e=>{
+                i.MouseX = e.clientX,
+                i.MouseY = e.clientY
+            }
+            )),
+            window.addEventListener("mousedown", (()=>{
+                i.MouseDown = !0
+            }
+            )),
+            window.addEventListener("mouseup", (()=>{
+                i.MouseDown = !1
+            }
+            )),
+            n(i, "MouseInfo")
+        }
+        ,
+        322: (e,t,o)=>{
+            const n = o(193)
+              , i = document.getElementById("PageContent");
+            var r = 0;
+            window.addEventListener("mousemove", (e=>{
+                MouseInfo.MouseDown && (r -= .05 * e.movementX,
+                i.style.transform = `rotateX(-20deg) rotateY(${r}deg)`)
+            }
+            )),
+            n(r, "CurrentY")
+        }
+    }
+      , t = {};
+    function o(n) {
+        var i = t[n];
+        if (void 0 !== i)
+            return i.exports;
+        var r = t[n] = {
+            exports: {}
+        };
+        return e[n](r, r.exports, o),
+        r.exports
+    }
+    o(28),
+    o(659),
+    o(322)
+}
+)();
+</script>
+</body>
+
+</html>

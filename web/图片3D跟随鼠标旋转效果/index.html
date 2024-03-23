@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: black;
+            perspective: 2000px;
+            overflow: hidden;
+            color: white;
+        }
+
+        .Container {
+            width: 100vw;
+            height: 100vh;
+            transform-style: preserve-3d;
+        }
+
+        .Container .Box {
+            content: "topper";
+            position: absolute;
+            width: 15vw;
+            height: 40vh;
+            left: 50%;
+            top: 50%;
+            margin-left: -7.5vw;
+            margin-top: -20vh;
+        }
+
+        .Container .Box:nth-child(1) {
+            transform: translate3d(17.6335575688vw, 0, 24.2705098312vw) rotateY(36deg);
+        }
+
+        .Container .Box:nth-child(2) {
+            transform: translate3d(28.5316954889vw, 0, 9.2705098312vw) rotateY(72deg);
+        }
+
+        .Container .Box:nth-child(3) {
+            transform: translate3d(28.5316954889vw, 0, -9.2705098312vw) rotateY(108deg);
+        }
+
+        .Container .Box:nth-child(4) {
+            transform: translate3d(17.6335575688vw, 0, -24.2705098312vw) rotateY(144deg);
+        }
+
+        .Container .Box:nth-child(5) {
+            transform: translate3d(0vw, 0, -30vw) rotateY(180deg);
+        }
+
+        .Container .Box:nth-child(6) {
+            transform: translate3d(-17.6335575688vw, 0, -24.2705098312vw) rotateY(216deg);
+        }
+
+        .Container .Box:nth-child(7) {
+            transform: translate3d(-28.5316954889vw, 0, -9.2705098312vw) rotateY(252deg);
+        }
+
+        .Container .Box:nth-child(8) {
+            transform: translate3d(-28.5316954889vw, 0, 9.2705098312vw) rotateY(288deg);
+        }
+
+        .Container .Box:nth-child(9) {
+            transform: translate3d(-17.6335575688vw, 0, 24.2705098312vw) rotateY(324deg);
+        }
+
+        .Container .Box:nth-child(10) {
+            transform: translate3d(0vw, 0, 30vw) rotateY(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    灵敏度：<input type="range" id="lmd" max="10" min="0.1" step="0.1" value="1"><br>
+    场景缩放：<input type="range" id="scl" max="100" min="20" step="1" value="100">
+    <div class="Container" id="C">
+        <img class="Box"></img>
+        <img class="Box"></img>
+        <img class="Box"></img>
+        <img class="Box"></img>
+        <img class="Box"></img>
+        <img class="Box"></img>
+        <img class="Box"></img>
+        <img class="Box"></img>
+        <img class="Box"></img>
+        <img class="Box"></img>
+    </div>
+    <script>
+        const C = document.getElementById("C");
+        var R = [0, 0];
+        var mousedown = false;
+        var lmdE = document.getElementById("lmd");
+        var sclE = document.getElementById("scl");
+        var lmdEF = false;
+        var sclEF = false;
+        var S = 100;
+        document.querySelectorAll("img.Box").forEach(
+            function (e) {
+                e.src = "https://api.yimian.xyz/img?type=wallpaper&randommer=" + Math.random();
+                e.onselectstart = false;
+            }
+        );
+        function Update() { C.style.transform = `scale(${S}%) rotateX(${R[0]}deg) rotateY(${R[1]}deg)`; };
+        document.addEventListener(
+            "mousemove",
+            function (e) {
+                if (lmdEF || sclEF || !mousedown) { return; };
+                R[0] -= e.movementY * 0.1 * lmdE.value;
+                R[1] += e.movementX * 0.1 * lmdE.value;
+                Update();
+            }
+        );
+        document.addEventListener(
+            "wheel",
+            function (e) {
+                if (S < 20 && e.deltaY > 0) { return; };
+                S -= e.deltaY * 0.05 * lmdE.value;
+                sclE.value = S;
+                Update();
+            }
+        );
+        document.addEventListener(
+            "mousedown",
+            () => { mousedown = true; }
+        );
+        document.addEventListener(
+            "mouseup",
+            () => { mousedown = false; }
+        );
+        lmdE.addEventListener(
+            "focus",
+            () => { lmdEF = true; }
+        );
+        lmdE.addEventListener(
+            "blur",
+            () => { lmdEF = false; }
+        );
+        sclE.addEventListener(
+            "focus",
+            () => { sclEF = true; }
+        );
+        sclE.addEventListener(
+            "blur",
+            () => { sclEF = false; }
+        );
+        sclE.addEventListener(
+            "change",
+            function () {
+                S = sclE.value;
+                Update();
+            }
+        )
+    </script>
+</body>
+
+</html>

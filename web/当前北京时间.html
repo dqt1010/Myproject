@@ -1,0 +1,27 @@
+<html>
+<head>
+  <title>当前北京时间</title>
+  <script>
+    function displayTime() {
+      var now = new Date();
+      var year = now.getFullYear();
+      var month = (now.getMonth() + 1).toString().padStart(2, '0');
+      var day = now.getDate().toString().padStart(2, '0');
+      var hours = now.getHours().toString().padStart(2, '0');
+      var minutes = now.getMinutes().toString().padStart(2, '0');
+      var seconds = now.getSeconds().toString().padStart(2, '0');
+      
+      var currentTime = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+      document.getElementById('clock').textContent = currentTime;
+    }
+
+    window.onload = function() {
+      setInterval(displayTime, 1000); // 每秒钟更新一次时间
+    };
+  </script>
+</head>
+<body>
+  <h1>当前北京时间：</h1>
+  <div id="clock" style="font-size:20px"></div>
+</body>
+</html>

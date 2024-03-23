@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html zh-cn>
+<head>
+    <title>深色模式切换</title>
+    <style>
+body{
+  background: #fbfbfb;
+  color:#000;
+  width: 100%;
+  height: 100%;
+  margin:0;
+  padding: 0;
+  font-family:"微软雅黑";
+}
+
+.dark-mode {
+  background-color: #333; 
+  color: #f5f5f5; 
+}
+    </style>
+    <script>
+        function toggleDarkMode() {
+          document.body.classList.add('dark-mode');
+          localStorage.setItem('preferred-theme', 'dark');
+        }
+        
+        function toggleLightMode() {
+          document.body.classList.remove('dark-mode');
+          localStorage.setItem('preferred-theme', 'light');
+        }
+        
+        function initializeTheme() {
+          const preferredTheme = localStorage.getItem('preferred-theme');
+        
+          // 根据用户的首选主题设置页面样式
+          if (preferredTheme === 'dark' || (preferredTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            toggleDarkMode();
+          } else {
+            toggleLightMode();
+          }
+        
+          // 监听系统模式的变化
+          window.matchMedia('(prefers-color-scheme: dark)').addListener(event => {
+            if (event.matches) {
+              toggleDarkMode();
+            } else {
+              toggleLightMode();
+            }
+          });
+        }
+        
+        initializeTheme();
+        
+            </script>
+</head>
+<body>
+    <button onclick="toggleDarkMode()">深色模式</a>
+    <button onclick="toggleLightMode()">浅色模式</a>
+</body>
+</html>
