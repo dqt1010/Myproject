@@ -1,0 +1,277 @@
+.backgroundCard {
+    background: linear-gradient(to bottom right,pink, #498fff);
+    color: #353535;
+    width: 700px;
+    height: 300px;
+    margin: 1rem;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.plqCard {
+    background: hsla(100, 100%, 100%, 0.8);
+    backdrop-filter: blur(3px);
+    float: left;
+    position: relative;
+    width: 1000px;
+    height: 810px;
+    margin: 1rem;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+.plqCard button {
+    margin-top: 10px;
+}
+
+#plqinput {
+    align-items: center;
+    border: 2px solid rgba(0, 0, 0, 0.18);
+    border-radius: 10px;
+    display: flex;
+    gap: 8px;
+    height: 100px;
+    padding: 0px 15px;
+    transition: all 200ms ease 0s;
+    width: 80%;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 102%;
+    height: 102%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.overlay:hover {
+    cursor: not-allowed;
+}
+
+.commentbox {
+    width: 100%;
+    margin: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.commentbox-dname {
+    font-size: 20px;
+}
+
+.commentbox-content {
+    font-size: 14px;
+    display: inline-block;
+}
+
+#commentshower {
+    text-align: left;
+}
+
+.tx-Img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #aaa;
+    float: left;
+    margin: 17px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.tx-Img:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: scale(102%);
+    cursor: pointer;
+}
+
+.information {
+    background: hsla(100, 100%, 100%, 0.8);
+    backdrop-filter: blur(6px);
+    width: 680px;
+    height: 480px;
+    margin: 1rem;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.information hr {
+    width: 60%;
+}
+.information .text {
+    width: 99%;
+    height: 400px;
+    background-color: #f3f2f2;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.hz-usr {
+    background: darkgoldenrod;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    height: 20px;
+    display: inline-block;
+    margin: 5px;
+}
+.hz-usr:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: scale(102%);
+    cursor: pointer;
+}
+
+.hz-master {
+    background: #0061fd;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    height: 20px;
+    display: inline-block;
+    margin: 5px;
+}
+.hz-master:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+    transform: scale(110%);
+    cursor: pointer;
+}
+
+.hz-renzheng {
+    background: green;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    height: 20px;
+    display: inline-block;
+    margin: 5px;
+}
+.hz-renzheng:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+    transform: scale(102%);
+    cursor: pointer;
+}
+
+.hz-notwelcome {
+    background: red;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    height: 20px;
+    display: inline-block;
+    margin: 5px;
+}
+.hz-notwelcome:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+    transform: scale(102%);
+    cursor: pointer;
+}
+
+.hz-vip {
+    background: orange;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    height: 20px;
+    display: inline-block;
+    margin: 5px;
+}
+.hz-vip:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+    transform: scale(102%);
+    cursor: pointer;
+}
+
+.hz-svip {
+    background: linear-gradient(to bottom right,#498fff, purple);
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    height: 20px;
+    display: inline-block;
+    margin: 5px;
+}
+.hz-svip:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+    transform: scale(102%);
+    cursor: pointer;
+}
+
+.btn-pl {
+    border-radius: 50px;
+    width: 66px;
+    height: 35px;
+    margin: 5px;
+    --bs-btn-color: #000;
+    --bs-btn-border-color: #000;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #000;
+    --bs-btn-hover-border-color: #000;
+    --bs-btn-focus-shadow-rgb: 108, 117, 125;
+    --bs-btn-active-color: #000;
+    --bs-btn-active-bg: #000;
+    --bs-btn-active-border-color: #000;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #000;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #000;
+    --bs-gradient: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .information {
+        background: rgba(41,41,41,0.5);
+        backdrop-filter: blur(6px);
+        width: 680px;
+        height: 480px;
+        margin: 1rem;
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+    .information .text {
+        width: 99%;
+        height: 400px;
+        background-color: #aaa;
+        border-radius: 5px;
+        overflow-y: auto;
+    }
+
+    .plqCard {
+        background: rgba(41,41,41,0.5);
+        backdrop-filter: blur(6px);
+        float: left;
+        position: relative;
+        width: 1000px;
+        height: 810px;
+        margin: 1rem;
+        border-radius: 15px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        overflow-y: auto;
+    }
+
+    .btn-pl {
+        border-radius: 50px;
+        width: 66px;
+        height: 35px;
+        margin: 5px;
+        --bs-btn-color: #fff;
+        --bs-btn-border-color: #fff;
+        --bs-btn-hover-color: #000;
+        --bs-btn-hover-bg: #fff;
+        --bs-btn-hover-border-color: #fff;
+        --bs-btn-focus-shadow-rgb: 108, 117, 125;
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: #fff;
+        --bs-btn-active-border-color: #fff;
+        --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        --bs-btn-disabled-color: #fff;
+        --bs-btn-disabled-bg: transparent;
+        --bs-btn-disabled-border-color: #fff;
+        --bs-gradient: none;
+    }
+}
