@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>邮件发送机</title>
+    </head>
+    <body>
+        <button onclick="sendEmail()">发送邮件</button>
+    <script>
+        function sendEmail() {
+        $.ajax({
+            url: "/api/sendEmail",
+            type: "post",
+            data: {
+                sender: "发送者邮箱",
+                loginpwd: "登录凭据",
+                target: "目标邮箱",
+                text: "邮件正文",
+                title: "邮件标题"
+            }
+        })
+        }
+    </script>
+    </body>
+</html>

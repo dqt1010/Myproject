@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录</title>
+  <script src="https://cdn.staticfile.org/jquery/3.7.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
+</head>
+
+<body>
+    <div class="login">
+       <h1 style="color: #ddd;">登录</h1>
+      <h2>用户名</h2>
+      <input id="l_username" class="form-control" aria-describedby="emailHelp">
+      <h2>密码</h2>
+      <input id="l_password" type="password" class="form-control"><br>
+    <button onclick="handleLogin()" class="btn btn-primary">登录</button><br><br>
+    <a href="/register.html" style="color: #ddd;">没有账号？注册一个</a>
+   </div>
+  <script>
+    async function login(username, password) {
+
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      } else {
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch (error) {
+          errorData = { type: 'error', code: response.status, error: '登录失败' };
+        }
+        return errorData;
+      }
+    }
+
+    async function handleLogin() {
+  const username = document.getElementById('l_username').value;
+  const password = document.getElementById('l_password').value;
+
+  if (!username || !password) {
+    alert("你输入个空白账号我怎么为你登录。。。");
+    return;
+  }
+
+  const result = await login(username, password);
+
+  if (result.type === 'success') {
+    alert(result.message);
+    Cookies.set('loggedIn', true); // 设置登录状态的cookie
+  } else if (result.type === 'error' && result.code === 401) {
+    alert("世界上有这个账号？或密码错误");
+  } else {
+    alert("登录失败，请重试");
+  }
+}
+  </script>
+</body>
+</html>

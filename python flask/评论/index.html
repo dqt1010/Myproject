@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>评论区</title>
+    <style>
+        .reply {
+            margin-left: 3em;
+        }
+    </style>
+</head>
+<body>
+    <form id="add-comment-form">
+        <h2>发送评论</h2>
+        <input type="text" id="username-input" placeholder="用户名"><br><br>
+        <textarea id="comment-content" rows="4" cols="50" placeholder="内容..."></textarea><br>
+        <button type="submit">发送</button>
+    </form><br>
+    <hr style="width:70%"><br><br><br>
+    <div id="comments-container"></div>
+    <script>
+// 获取评论列表
+function getComments() {
+  fetch('/api/comments')
+    .then(response => response.json())
+    .then(data => {
+      const commentsContainer = document.getElementById('comments-container');
+      commentsContainer.innerHTML = ''; // 清空之前的评论内容
+
+      data.forEach(comment => {
+        const commentElement = document.createElement('div');
+
+        const usernameElement = document.createElement('strong');
+        usernameElement.innerText = comment.username + ': ';
+        commentElement.appendChild(usernameElement);
+
+        const contentElement = document.createElement('span');
+        contentElement.innerText = comment.content;
+        commentElement.appendChild(contentElement);
+
+        const replyButton = document.createElement('button');
+        replyButton.innerText = '回复';
+        replyButton.addEventListener('click', () => addReply(comment.id)); // 将评论ID作为参数传递给addReply函数
+        commentElement.appendChild(replyButton);
+
+        // 显示回复内容
+        if (comment.replies && comment.replies.length > 0) {
+          const repliesContainer = document.createElement('div');
+          comment.replies.forEach(reply => {
+            const replyElement = document.createElement('div');
+            replyElement.classList.add('reply');
+
+            const replyUsernameElement = document.createElement('strong');
+            replyUsernameElement.innerText = reply.username + ': ';
+            replyElement.appendChild(replyUsernameElement);
+
+            const replyContentElement = document.createElement('span');
+            replyContentElement.innerText = reply.content;
+            replyElement.appendChild(replyContentElement);
+
+            repliesContainer.appendChild(replyElement);
+          });
+
+          // 将回复容器添加到评论元素中
+          commentElement.appendChild(repliesContainer);
+        }
+
+        commentsContainer.appendChild(commentElement);
+      });
+    });
+}
+
+
+// 新增评论
+function addComment(event) {
+  event.preventDefault();
+  const username = document.getElementById('username-input').value;
+  const commentContent = document.getElementById('comment-content').value;
+
+  fetch('/api/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ 
+      username: username,
+      content: commentContent
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    getComments();
+    document.getElementById('add-comment-form').reset();
+  });
+}
+
+// 新增回复
+function addReply(commentId) {
+  const replyUsername = prompt('请输入用户名:');
+  const replyContent = prompt('请输入回复内容:');
+
+  if (replyUsername && replyContent) {
+    fetch(`/api/comments/${commentId}/replies`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        username: replyUsername,
+        content: replyContent 
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      getComments();
+    });
+  }
+  getComments();
+}
+
+// 页面加载完成时获取评论列表
+document.addEventListener('DOMContentLoaded', () => {
+  getComments();
+  document.getElementById('add-comment-form').addEventListener('submit', addComment);
+});
+    </script>
+</body>
+</html>
